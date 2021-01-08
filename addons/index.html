@@ -516,7 +516,7 @@
                 <td>ShaguChat</td>
                 <td>Allows you to track certain keywords in chat channels you're subscribed to. Visit its <a href="https://github.com/shagu/ShaguChat">Github page</a> for more information.</td>
                 <td><a href="../assets/img/addons/ShaguChat.png" data-lightbox="dsfsfFDA">📷</a></td>
-                <td><a href="https://github.com/shagu/ShaguChat/archive/master.zip">📥</a></td>
+                <td><a href="https://github.com/shagu/ShaguChat/archive/master.zip" onclick="ShaguWarning()">📥</a></td>
             </tr>
             <tr id="shaguplates">
                 <td>ShaguPlates</td>
@@ -524,14 +524,14 @@
                 <td><a href="../assets/img/addons/ShaguPlates-1.png" data-lightbox="asdafasfa%#A">📷</a>
                     <a href="../assets/img/addons/ShaguPlates-2.png" data-lightbox="asdafasfa%#A"></a>
                     <a href="../assets/img/addons/ShaguPlates-3.png" data-lightbox="asdafasfa%#A"></a></td>
-                <td><a href="https://github.com/shagu/ShaguPlates/archive/master.zip">📥</a></td>
+                <td><a href="https://github.com/shagu/ShaguPlates/archive/master.zip" onclick="ShaguWarning()">📥</a></td>
             </tr>
             <tr id="shaguwidget">
                 <td>ShaguWidget</td>
                 <td>Enables you to add data texts on your screen. Visit its <a href="https://github.com/shagu/ShaguWidget">Github page</a> for more information.</td>
                 <td><a href="../assets/img/addons/ShaguWidget-1.png" data-lightbox="asfFASFARTAtatEATEAT">📷</a>
                     <a href="../assets/img/addons/ShaguWidget-2.png" data-lightbox="asfFASFARTAtatEATEAT"></a></td>
-                <td><a href="https://github.com/shagu/ShaguWidget/archive/master.zip">📥</a></td>
+                <td><a href="https://github.com/shagu/ShaguWidget/archive/master.zip" onclick="ShaguWarning()">📥</a></td>
             </tr>
             <tr id="simpleactionsets">
                 <td>SimpleActionSets</td>
@@ -653,6 +653,12 @@
             backgroundColor: 'var(--background-alt)',
             textColor: 'var(--text-main)'
         })
+    </script>
+
+    <script>
+        function ShaguWarning() {
+            alert("Make sure to remove '-master' from the filename with '-tbc' before you install the addon!");
+        }
     </script>
 
     <!-- Initiate Lightbox -->
