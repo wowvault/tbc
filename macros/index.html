@@ -37,7 +37,7 @@
             <code>
                 /cast [mod:alt,target=player][target=mouseover,exists][help][] SPELLNAME
             </code>
-        <h3><a href="https://wowvault.github.io/tbc/addons#aftercast">AfterCast</a> Mouseover <sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup></h3>
+        <h3><a href="https://wowvault.github.io/tbc/addons#aftercast">AfterCast</a> Mouseover <sup id="fnref:AfterCast"><a href="#fn:AfterCast" rel="footnote">AfterCast</a></sup></h3>
             <p>Long, customizable:</p>
                 <code>
                     #showtooltip SPELLNAME<br>
@@ -79,7 +79,7 @@
                 #showtooltip SPELLNAME<br>
                 /run local p="SPELLNAME"local t,f,s,d=" ready!",math.floor,GetSpellCooldown(p)local c=s+d-GetTime()local m,r=f(c/60),f(c%60)if d>0 then t=": "..m.."m "..r.."s"end;SendChatMessage(p..t,UnitInRaid("Player")and"RAID"or"PARTY")
             </code>
-        <h3>Use DBM to Announce Spell CDs <sup id="fnref:2"><a href="#fn:2" rel="footnote">2</a></sup></h3>
+        <h3>Use DBM to Announce Spell CDs <sup id="fnref:DBMAnnounce"><a href="#fn:DBMAnnounce" rel="footnote">DBMAnnounce</a></sup></h3>
             <code>
                 #showtooltip<br>
                 /run if GetSpellCooldown("SPELLNAME")==0 then DBM.StartStatusBarTimer(TIME,"SPELLNAME","Interface\Icons\Spell_HolyAshesToAshes") end<br>
@@ -104,7 +104,7 @@
                 </code>
             <p>Show:</p>
                 <code>/script UIErrorsFrame:Show()</code>
-        <h3>Set Target Marks <sup id="fnref:3"><a href="#fn:3" rel="footnote">3</a></sup></h3>
+        <h3>Set Target Marks <sup id="fnref:TargetMarks"><a href="#fn:TargetMarks" rel="footnote">TargetMarks</a></sup></h3>
             <p>Target:</p>
                 <code>
                     /script SetRaidTarget("target", MARKNUMBER)
@@ -117,15 +117,15 @@
             <code>
                 /script DEFAULT_CHAT_FRAME:AddMessage((((GetUnitManaRegenRateFromSpirit("player"))*80)+((GetManaRegen("player"))*20)),0,0.1,1)
             </code>
-        <h3>Set Master Loot <sup id="fnref:4"><a href="#fn:4" rel="footnote">4</a></sup></h3>
+        <h3>Set Master Loot <sup id="fnref:MasterLoot"><a href="#fn:MasterLoot" rel="footnote">MasterLoot</a></sup></h3>
             <code>
                 /run j=GetLootMethod() k=UnitLevel("target") if (k<0 and IsRaidLeader() and j=="group") then SetLootMethod("master","YOURNAME") end
             </code>
-        <h3>Mark Groups <sup id="fnref:5"><a href="#fn:5" rel="footnote">5</a></sup></h3>
+        <h3>Mark Groups <sup id="fnref:MarkGroups"><a href="#fn:MarkGroups" rel="footnote">MarkGroups</a></sup></h3>
             <code>
                 /script bbgn=mod((bbgn or 1)-1,3)+2; local t = 1; for i=1,40 do local _,_,g = GetRaidRosterInfo(i); if g==bbgn then SetRaidTarget("raid"..i,t); t=t+1; end end SendChatMessage("GROUPNAME "..bbgn,"RAID_WARNING");
             </code>
-        <h3>Announce the Current DPS Target in Raid Warning <sup id="fnref:6"><a href="#fn:6" rel="footnote">6</a></sup></h3>
+        <h3>Announce the Current DPS Target in Raid Warning <sup id="fnref:CurrentDPSTarget"><a href="#fn:CurrentDPSTarget" rel="footnote">CurrentDPSTarget</a></sup></h3>
             <code>
                 /script local i,s,g,u,c={"star","circle","diamond","triangle","moon","square","cross","skull"},SendChatMessage,GetRaidTargetIndex("target"),UnitName("target"),"RAID_WARNING" if g then s("Target: {"..i[g].."} "..u,c)else s("Target: "..u,c)end
             </code>
@@ -141,7 +141,7 @@
             <code>
                 /run local i=1 while UnitBuff("player",i) do DEFAULT_CHAT_FRAME:AddMessage(UnitBuff("player",i)); i=i+1 end
             </code>
-        <h3>Print Raid Members Below a Certain HP in Chat Window <sup id="fnref:7"><a href="#fn:7" rel="footnote">7</a></sup></h3>
+        <h3>Print Raid Members Below a Certain HP in Chat Window <sup id="fnref:AnnounceLowHP"><a href="#fn:AnnounceLowHP" rel="footnote">AnnounceLowHP</a></sup></h3>
             <code>
                 /script for i = 1, 40 do local u = "raid"..i; local hp = UnitHealthMax(u); local _, _, grp = GetRaidRosterInfo(i); if UnitExists(u) and hp < HEALTHVALUE and grp <= 5 then ChatFrame1:AddMessage(UnitName(u)..": "..hp.." HP"); end end
             </code>
@@ -149,7 +149,7 @@
             <code>
                 /run nf="[Flask!]: ";for i=1,GetNumRaidMembers()do for b=1,41 do ufl=UnitAura('raid'..i,b);if ufl then if strfind(ufl,"Flask")then break;end;elseif b==41 then nf=nf..UnitName('raid'..i).." ";end;end;end;SendChatMessage(nf,"raid");
             </code>
-        <h3>Remove a Buff <sup id="fnref:8"><a href="#fn:8" rel="footnote">8</a></sup></h3>
+        <h3>Remove a Buff <sup id="fnref:RemoveBuff"><a href="#fn:RemoveBuff" rel="footnote">RemoveBuff</a></sup></h3>
             <code>
                 /run local _,_,t=GetSpellInfo(SPELLID) for i=1,40 do local _,_,x=UnitBuff("player",i) if x==t then CancelPlayerBuff(i) end end
             </code>
@@ -183,7 +183,7 @@
                 <code>
                     /script DEFAULT_CHAT_FRAME:AddMessage(2.6-(GetCombatRatingBonus(CR_DEFENSE_SKILL)*.04+GetCombatRatingBonus(CR_CRIT_TAKEN_MELEE)),1,0.5,0)
                 </code>
-            <h3>Health Shift <sup id="fnref:9"><a href="#fn:9" rel="footnote">9</a></sup></h3>
+            <h3>Health Shift <sup id="fnref:HealthShift"><a href="#fn:HealthShift" rel="footnote">HealthShift</a></sup></h3>
                 <code>
                     /run local f="Dire Bear Form";f=GetSpellCooldown(f)>0 or UnitMana('player')>XXX or not IsUsableSpell(f) or CancelPlayerBuff(f)<br>
                     /stopmacro [form:1]<br>
@@ -196,7 +196,7 @@
                 <code>
                     /cast !Cat Form
                 </code>
-            <h3>Smarter Powershift <sup id="fnref:10"><a href="#fn:10" rel="footnote">10</a></sup></h3>
+            <h3>Smarter Powershift <sup id="fnref:SmartPowerShift"><a href="#fn:SmartPowerShift" rel="footnote">SmartPowerShift</a></sup></h3>
                 <code>
                     /run local f="Cat Form";f=GetSpellCooldown(f)>0 or UnitMana('player')>MANAVALUE or not IsUsableSpell(f) or CancelPlayerBuff(f)<br>
                     /stopmacro [form]<br>
@@ -283,7 +283,7 @@
                 </code>
     <br>
     <h1 id="warlock"><a href="#warlock"><img id="icons" src="../assets/img/classes/warlock/icon.jpg"></a> Warlock</h1>
-        <h3>Delete Shards <sup id="fnref:11"><a href="#fn:11" rel="footnote">11</a></sup></h3>
+        <h3>Delete Shards <sup id="fnref:DeleteShards"><a href="#fn:DeleteShards" rel="footnote">DeleteShards</a></sup></h3>
             <code>
                 /run i="Soul Shard"d=GetItemCount(i)-30 for x=0,4 do for y=1,GetContainerNumSlots(x) do  if (d>0) then l=GetContainerItemLink(x,y) if l and GetItemInfo(l)==i then PickupContainerItem(x,y) DeleteCursorItem() d=d-1 end end end end<br>
                 /cast Drain Soul(Rank 1)
@@ -344,15 +344,15 @@
     </script>
 
     <!-- Footnotes -->
-    <div class="footnotes"><ol><li class="footnote" id="fn:1"><p>This macro requires the addon <a href="https://wowvault.github.io/tbc/addons#aftercast">AfterCast</a> to work.<br><br>What AfterCast allows this macro to do is to push the execution event depending on the status of your cast. You can make it so that the macro only works if the spell you're casting is a fail (<em>+fail</em> or <em>+interrupt</em>), success (<em>+done</em>), or in progress (<em>+start</em>).<br><br>Replace <em>STATUS</em> with the aformentioned Aftercast status of your choosing, and replace <em>SPELLNAME</em> with the spell name of your choosing.<a href="#fnref:1" title="return to article"> ↩</a><p></li></ol></div>
-    <div class="footnotes"><ol><li class="footnote" id="fn:2"><p>This countdown will sync with people who are also using DBM. Spamming the macro doesn't create extra bars.<br><br>To use the macro for a spell you want to use, you should replace <em>SPELLNAME</em> in the macro, and <em>TIME</em> with the amount of uptime your spell has in seconds.<a href="#fnref:2" title="return to article"> ↩</a><p></li></ol></div>
-    <div class="footnotes"><ol><li class="footnote" id="fn:3"><p>Replace <em>MARKNUMBER</em> with the mark of your choosing:<br><br>1: <img id="icons-alt" src="../assets/img/marks/star.png"><br>2: <img id="icons-alt" src="../assets/img/marks/circle.png"><br>3: <img id="icons-alt" src="../assets/img/marks/diamond.png"><br>4: <img id="icons-alt" src="../assets/img/marks/triangle.png"><br>5: <img id="icons-alt" src="../assets/img/marks/moon.png"><br>6: <img id="icons-alt" src="../assets/img/marks/square.png"><br>7: <img id="icons-alt" src="../assets/img/marks/cross.png"><br>8: <img id="icons-alt" src="../assets/img/marks/skull.png"><a href="#fnref:3" title="return to article"> ↩</a><p></li></ol></div> 
-    <div class="footnotes"><ol><li class="footnote" id="fn:4"><p>If you're a raid leader and often forget to turn master loot on, add this macro to one of the macros you regularly use. <br><br>Make sure to also replace <em>YOURNAME</em> with your character's name.<a href="#fnref:4" title="return to article"> ↩</a><p></li></ol></div>
-    <div class="footnotes"><ol><li class="footnote" id="fn:5"><p>Spamming this macro will mark groups (starting from Group 2). With each press, you will mark the next group. The order goes like this: Group 2 > Group 3 > Group 4. After you marked group 4, you'll go back to marking group 2, so the macro rotates. This is useful on variety of bosses where a group has to perform a certain act, like Gurtogg Bloodboil in Black Temple.<br><br>Feel free to replace the name of the group (that will show up within the chat announcement) by replacing <em>GROUPNAME</em>.<a href="#fnref:5" title="return to article"> ↩</a><p></li></ol></div>
-    <div class="footnotes"><ol><li class="footnote" id="fn:6"><p>If you have dumber than usual DPS players who refuse to single target mobs, this will announce the target you want them to DPS down. If your target has a mark, it will also be included in the raid warning. Make sure you yourself target the mobs before you use this macro.<a href="#fnref:6" title="return to article"> ↩</a><p></li></ol></div>
-    <div class="footnotes"><ol><li class="footnote" id="fn:7"><p>Replace <em>HEALTHVALUE</em> with the HP threshold you'd like.<a href="#fnref:7" title="return to article"> ↩</a><p></li></ol></div>
-    <div class="footnotes"><ol><li class="footnote" id="fn:8"><p>Replace <em>SPELLID</em> with the spell ID of the buff you want to remove.<a href="#fnref:8" title="return to article"> ↩</a><p></li></ol></div>
-    <div class="footnotes"><ol><li class="footnote" id="fn:9"><p>Be very careful using this. It's not visible but you <em>do get out of form</em> when you use this macro and if your target swings at you at that particular time, you will die.<br><br>Same as the Smart Powershift macro, make sure to change the value of <em>n</em> with the mana threshold you don't want powershifting to drop you below, so you don't stand in front of your target out of form with no mana to get back in form like a tool.<a href="#fnref:9" title="return to article"> ↩</a><p></li></ol></div>
-    <div class="footnotes"><ol><li class="footnote" id="fn:10"><p>Replace <em>MANAVALUE</em> with the mana threshold you don't want powershifting to drop you below.<a href="#fnref:10" title="return to article"> ↩</a><p></li></ol></div>
-    <div class="footnotes"><ol><li class="footnote" id="fn:11"><p>If you want to change amount of shards you want to keep, change the amount <em>30</em> within the macro.<a href="#fnref:11" title="return to article"> ↩</a><p></li></ol></div>
+    <div class="footnotes"><ol><li class="footnote" id="fn:AfterCast"><p>This macro requires the addon <a href="https://wowvault.github.io/tbc/addons#aftercast">AfterCast</a> to work.<br><br>What AfterCast allows this macro to do is to push the execution event depending on the status of your cast. You can make it so that the macro only works if the spell you're casting is a fail (<em>+fail</em> or <em>+interrupt</em>), success (<em>+done</em>), or in progress (<em>+start</em>).<br><br>Replace <em>STATUS</em> with the aformentioned Aftercast status of your choosing, and replace <em>SPELLNAME</em> with the spell name of your choosing.<a href="#fnref:AfterCast" title="return to article"> ↩</a><p></li></ol></div>
+    <div class="footnotes"><ol><li class="footnote" id="fn:DBMAnnounce"><p>This countdown will sync with people who are also using DBM. Spamming the macro doesn't create extra bars.<br><br>To use the macro for a spell you want to use, you should replace <em>SPELLNAME</em> in the macro, and <em>TIME</em> with the amount of uptime your spell has in seconds.<a href="#fnref:DBMAnnounce" title="return to article"> ↩</a><p></li></ol></div>
+    <div class="footnotes"><ol><li class="footnote" id="fn:TargetMarks"><p>Replace <em>MARKNUMBER</em> with the mark of your choosing:<br><br>1: <img id="icons-alt" src="../assets/img/marks/star.png"><br>2: <img id="icons-alt" src="../assets/img/marks/circle.png"><br>3: <img id="icons-alt" src="../assets/img/marks/diamond.png"><br>4: <img id="icons-alt" src="../assets/img/marks/triangle.png"><br>5: <img id="icons-alt" src="../assets/img/marks/moon.png"><br>6: <img id="icons-alt" src="../assets/img/marks/square.png"><br>7: <img id="icons-alt" src="../assets/img/marks/cross.png"><br>8: <img id="icons-alt" src="../assets/img/marks/skull.png"><a href="#fnref:TargetMarks" title="return to article"> ↩</a><p></li></ol></div> 
+    <div class="footnotes"><ol><li class="footnote" id="fn:MasterLoot"><p>If you're a raid leader and often forget to turn master loot on, add this macro to one of the macros you regularly use. <br><br>Make sure to also replace <em>YOURNAME</em> with your character's name.<a href="#fnref:MasterLoot" title="return to article"> ↩</a><p></li></ol></div>
+    <div class="footnotes"><ol><li class="footnote" id="fn:MarkGroups"><p>Spamming this macro will mark groups (starting from Group 2). With each press, you will mark the next group. The order goes like this: Group 2 > Group 3 > Group 4. After you marked group 4, you'll go back to marking group 2, so the macro rotates. This is useful on variety of bosses where a group has to perform a certain act, like Gurtogg Bloodboil in Black Temple.<br><br>Feel free to replace the name of the group (that will show up within the chat announcement) by replacing <em>GROUPNAME</em>.<a href="#fnref:MarkGroups" title="return to article"> ↩</a><p></li></ol></div>
+    <div class="footnotes"><ol><li class="footnote" id="fn:CurrentDPSTarget"><p>If you have dumber than usual DPS players who refuse to single target mobs, this will announce the target you want them to DPS down. If your target has a mark, it will also be included in the raid warning. Make sure you yourself target the mobs before you use this macro.<a href="#fnref:CurrentDPSTarget" title="return to article"> ↩</a><p></li></ol></div>
+    <div class="footnotes"><ol><li class="footnote" id="fn:AnnounceLowHP"><p>Replace <em>HEALTHVALUE</em> with the HP threshold you'd like.<a href="#fnref:AnnounceLowHP" title="return to article"> ↩</a><p></li></ol></div>
+    <div class="footnotes"><ol><li class="footnote" id="fn:RemoveBuff"><p>Replace <em>SPELLID</em> with the spell ID of the buff you want to remove.<a href="#fnref:RemoveBuff" title="return to article"> ↩</a><p></li></ol></div>
+    <div class="footnotes"><ol><li class="footnote" id="fn:HealthShift"><p>Be very careful using this. It's not visible but you <em>do get out of form</em> when you use this macro and if your target swings at you at that particular time, you will die.<br><br>Same as the Smart Powershift macro, make sure to change the value of <em>n</em> with the mana threshold you don't want powershifting to drop you below, so you don't stand in front of your target out of form with no mana to get back in form like a tool.<a href="#fnref:HealthShift" title="return to article"> ↩</a><p></li></ol></div>
+    <div class="footnotes"><ol><li class="footnote" id="fn:SmartPowerShift"><p>Replace <em>MANAVALUE</em> with the mana threshold you don't want powershifting to drop you below.<a href="#fnref:SmartPowerShift" title="return to article"> ↩</a><p></li></ol></div>
+    <div class="footnotes"><ol><li class="footnote" id="fn:DeleteShards"><p>If you want to change amount of shards you want to keep, change the amount <em>30</em> within the macro.<a href="#fnref:DeleteShards" title="return to article"> ↩</a><p></li></ol></div>
 </body>
