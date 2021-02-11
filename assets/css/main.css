@@ -1,4 +1,30 @@
 :root {
+  --background-body: #fff;
+  --background: #efefef;
+  --background-alt: #f7f7f7;
+  --selection: #d5eaf2;
+  --text-main: #363636;
+  --text-bright: #000;
+  --text-muted: #999;
+  --links: #0076d1;
+  --linkshover: #0076d1;
+  --anchor: #41adff;
+  --focus: #0096bfab;
+  --border: #dbdbdb;
+  --code: #000;
+  --animation-duration: 0.1s;
+  --button-hover: #ddd;
+  --scrollbar-thumb: #aaaaaa;
+  --scrollbar-thumb-hover: #c8c8c8;
+  --form-placeholder: #949494;
+  --form-text: #000;
+  --variable: #39a33c;
+  --highlight: #ff0;
+  --select-arrow: url("data:image/svg+xml;charset=utf-8,%3C?xml version='1.0' encoding='utf-8'?%3E %3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' height='62.5' width='116.9' fill='%23161f27'%3E %3Cpath d='M115.3,1.6 C113.7,0 111.1,0 109.5,1.6 L58.5,52.7 L7.4,1.6 C5.8,0 3.2,0 1.6,1.6 C0,3.2 0,5.8 1.6,7.4 L55.5,61.3 C56.3,62.1 57.3,62.5 58.4,62.5 C59.4,62.5 60.5,62.1 61.3,61.3 L115.2,7.4 C116.9,5.8 116.9,3.2 115.3,1.6Z'/%3E %3C/svg%3E");
+}
+
+@media (prefers-color-scheme: dark) {
+:root {
   --background-body: #202b38;
   --background: #161f27;
   --background-alt: #1a242f;
@@ -15,44 +41,73 @@
   --animation-duration: 0.1s;
   --button-hover: #324759;
   --scrollbar-thumb: var(--button-hover);
-  --scrollbar-thumb-hover: rgb(65, 92, 115);
+  --scrollbar-thumb-hover: #415c73;
   --form-placeholder: #a9a9a9;
   --form-text: #fff;
   --variable: #d941e2;
   --highlight: #efdb43;
   --select-arrow: url("data:image/svg+xml;charset=utf-8,%3C?xml version='1.0' encoding='utf-8'?%3E %3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' height='62.5' width='116.9' fill='%23efefef'%3E %3Cpath d='M115.3,1.6 C113.7,0 111.1,0 109.5,1.6 L58.5,52.7 L7.4,1.6 C5.8,0 3.2,0 1.6,1.6 C0,3.2 0,5.8 1.6,7.4 L55.5,61.3 C56.3,62.1 57.3,62.5 58.4,62.5 C59.4,62.5 60.5,62.1 61.3,61.3 L115.2,7.4 C116.9,5.8 116.9,3.2 115.3,1.6Z'/%3E %3C/svg%3E");
 }
-
-@media (prefers-color-scheme: light) {
-:root {
-  --background-body: #fff;
-  --background: #efefef;
-  --background-alt: #f7f7f7;
-  --selection: #d5eaf2;
-  --text-main: #363636;
-  --text-bright: #000;
-  --text-muted: #999;
-  --links: #0076d1;
-  --linkshover: #0076d1;
-  --anchor: #41adff;
-  --focus: #0096bfab;
-  --border: #dbdbdb;
-  --code: #000;
-  --animation-duration: 0.1s;
-  --button-hover: #ddd;
-  --scrollbar-thumb: rgb(44, 63, 79);
-  --scrollbar-thumb-hover: rgb(32, 45, 56);
-  --form-placeholder: #949494;
-  --form-text: #000;
-  --variable: #39a33c;
-  --highlight: #ff0;
-  --select-arrow: url("data:image/svg+xml;charset=utf-8,%3C?xml version='1.0' encoding='utf-8'?%3E %3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' height='62.5' width='116.9' fill='%23161f27'%3E %3Cpath d='M115.3,1.6 C113.7,0 111.1,0 109.5,1.6 L58.5,52.7 L7.4,1.6 C5.8,0 3.2,0 1.6,1.6 C0,3.2 0,5.8 1.6,7.4 L55.5,61.3 C56.3,62.1 57.3,62.5 58.4,62.5 C59.4,62.5 60.5,62.1 61.3,61.3 L115.2,7.4 C116.9,5.8 116.9,3.2 115.3,1.6Z'/%3E %3C/svg%3E");
-}
 }
 
 /******************/
 /* My Playground */
 /****************/
+
+html {
+  scrollbar-color: rgb(213, 213, 213) #fff;
+  scrollbar-color: var(--scrollbar-thumb) var(--background-body);
+  scrollbar-width: thin;
+  scroll-behavior: smooth;
+}
+
+@media (prefers-color-scheme: dark) {
+
+  html {
+  scrollbar-color: #324759 #202b38;
+  scrollbar-color: var(--scrollbar-thumb) var(--background-body);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+
+  html {
+  scrollbar-color: #324759 #202b38;
+  scrollbar-color: var(--scrollbar-thumb) var(--background-body);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+
+  html {
+  scrollbar-color: #324759 #202b38;
+  scrollbar-color: var(--scrollbar-thumb) var(--background-body);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+
+  html {
+  scrollbar-color: #324759 #202b38;
+  scrollbar-color: var(--scrollbar-thumb) var(--background-body);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+
+  html {
+  scrollbar-color: #324759 #202b38;
+  scrollbar-color: var(--scrollbar-thumb) var(--background-body);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+
+  html {
+  scrollbar-color: #324759 #202b38;
+  scrollbar-color: var(--scrollbar-thumb) var(--background-body);
+  }
+}
 
 .mainsection { /* This is for the main page that leads to the Addons and Macros pages */
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
