@@ -1,6 +1,6 @@
 # TBC Vault
 
-This is a vault where I collect/backup everything TBC. It's still a work in progress. Unless noted otherwise, assume everything is for the 2.4.3 patch. However, since there's little to no compatibility issues between the patches of TBC, that shouldn't stop you from trying things out. I have not encountered any issues on my own between patches.
+This is a vault where I collect/backup everything TBC. Unless noted otherwise, assume everything is for the 2.4.3 patch. However, since there's little to no compatibility issues between the patches of TBC, that shouldn't stop you from trying things out. I have not encountered any issues on my own between patches.
 
 # Websites
 
